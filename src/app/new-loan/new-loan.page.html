@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      New Loan
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-button fill="clear" expand="block" [routerLink]="['/add-items']">Add Items</ion-button>
+
+  <ion-label *ngFor="let item of items">
+    <h2 *ngIf="item.quantity > 0">{{item.id}} x {{item.quantity}}</h2>
+  </ion-label>
+
+  <ion-button expand="block" (click)="submit()" [disabled]="isSubmitDisabled">Submit</ion-button>
+
+  <div class="newLoan">
+    <ion-text color="medium">
+      <h2>Submit your new loan items!</h2>
+      <ion-icon name="happy-outline" size="large"></ion-icon>
+    </ion-text>
+  </div>
+</ion-content>

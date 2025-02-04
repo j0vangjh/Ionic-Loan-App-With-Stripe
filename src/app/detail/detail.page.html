@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Loan Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="loan">
+  <ion-label>
+    <p>Id: {{loan.id}}</p>
+    <h3>Status: {{loan.status}}</h3>
+    <h3>Due Date: {{loan.duedate | date:'d MMM yyyy'}}</h3>
+  </ion-label>
+  <ion-list>
+    <ion-item *ngFor="let item of loan.items">
+      <ion-label>{{item.id}} x {{item.quantity}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button fill="solid" color="danger" expand="block" *ngIf="loan.status === 'pending'" (click)="cancelLoan()">Cancel Loan</ion-button>
+  <ion-button shape="round" color="primary" expand="full" *ngIf="loan.status === 'approved' && isDueDatePassed() && !isPaid"  (click)="fine()">Pay Fine</ion-button>
+
+</ion-content>

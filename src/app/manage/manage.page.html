@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Manage Loans
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="loans?.length === 0 && loans !== null" class="noLoans">
+    <ion-text color="medium">
+      <h2>There are no pending loans at the moment.</h2>
+      <ion-icon name="happy-outline" size="large"></ion-icon>
+    </ion-text>
+  </div>
+  <ion-card *ngFor="let loan of loans">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="person" size="medium"></ion-icon>
+        <ion-label>{{loan.username}}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let item of loan.items">
+        <ion-label>{{item.id}} x {{item.quantity}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+    <ion-button fill="outline" color="success" (click)="approveLoan(loan)">APPROVE</ion-button>
+    <ion-button fill="outline" color="danger" (click)="rejectLoan(loan)">REJECT</ion-button>
+  </ion-card>
+</ion-content>

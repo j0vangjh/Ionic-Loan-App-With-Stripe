@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'skippyQ',
+  appId: 'com.nyp.skippyQ',
+  appName: 'SkippyQ',
   webDir: 'www'
 };
 
