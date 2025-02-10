@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from '../shared/item';
 import { ItemService } from '../shared/item.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-items',
@@ -10,6 +11,7 @@ import { ItemService } from '../shared/item.service';
 })
 export class AddItemsPage {
   items: Item[];
+  searchControl = new FormControl('');
 
   constructor(private router: Router, private itemService: ItemService) {
     this.items = this.itemService.getAll();
@@ -29,5 +31,11 @@ export class AddItemsPage {
     } else {
       this.items = allItems;
     }
+  }
+
+  refresh($event) {
+    this.searchControl.setValue('');
+    $event.target.complete();
+    this.items = this.itemService.getAll();
   }
 }

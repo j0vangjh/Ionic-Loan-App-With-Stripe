@@ -9,8 +9,10 @@
 
 <ion-content>
 
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-
+  <ion-searchbar (ionInput)="search($event)"[(ngModel)]="searchControl.value"></ion-searchbar>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-label>
