@@ -70,6 +70,3 @@ testem.log
 Thumbs.db
 
 # Sensitive files with API keys
-backend/server.js
-src/app/app.component.ts
-src/app/thankyou/thankyou.page.ts
